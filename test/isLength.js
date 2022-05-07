@@ -9,12 +9,15 @@ function isLength(str, options) {
     max = arguments[2];
   }
   const strLen = str.length
+  console.log('strLen: ', strLen)
   const surrogatePairs = str.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g) || [];
+  console.log('surrogatePairs: ', surrogatePairs);
   const len = strLen - surrogatePairs.length;
+  console.log('len: ', len);
   return len >= min && (typeof max === 'undefined' || len <= max);
 }
 
 
-str = '我a是b💩'
+let str = '我a是b💩'
 const res = isLength(str, 2, 6)
 console.log('res: ', res);
